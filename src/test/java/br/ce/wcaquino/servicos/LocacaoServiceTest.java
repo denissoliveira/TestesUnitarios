@@ -1,7 +1,5 @@
 package br.ce.wcaquino.servicos;
 
-
-
 import static br.ce.wcaquino.builders.FilmeBuilder.umFilme;
 import static br.ce.wcaquino.builders.FilmeBuilder.umFilmeSemEstoque;
 import static br.ce.wcaquino.builders.LocacaoBuilder.umLocacao;
@@ -23,6 +21,8 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -65,6 +65,18 @@ public class LocacaoServiceTest {
 	@Before
 	public void setup(){
 		MockitoAnnotations.initMocks(this);
+		System.out.println("Iniciando 2...");
+		CalculadoraTest.ordem.append("2");
+	}
+	
+	@After
+	public void tearDown(){
+		System.out.println("finalizando 2...");
+	}
+	
+	@AfterClass
+	public static void tearDownClass(){
+		System.out.println(CalculadoraTest.ordem.toString());
 	}
 	
 	@Test

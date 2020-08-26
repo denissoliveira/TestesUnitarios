@@ -1,7 +1,5 @@
 package br.ce.wcaquino.servicos;
 
-
-
 import static br.ce.wcaquino.builders.FilmeBuilder.umFilme;
 import static br.ce.wcaquino.builders.UsuarioBuilder.umUsuario;
 import static br.ce.wcaquino.matchers.MatchersProprios.caiNumaSegunda;
@@ -10,10 +8,11 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -23,7 +22,6 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
@@ -60,6 +58,18 @@ public class LocacaoServiceTest_PowerMock {
 	public void setup(){
 		MockitoAnnotations.initMocks(this);
 		service = PowerMockito.spy(service);
+		System.out.println("Iniciando 4...");
+		CalculadoraTest.ordem.append(4);
+	}
+	
+	@After
+	public void tearDown(){
+		System.out.println("finalizando 4...");
+	}
+	
+	@AfterClass
+	public static void tearDownClass(){
+		System.out.println(CalculadoraTest.ordem.toString());
 	}
 	
 	@Test
